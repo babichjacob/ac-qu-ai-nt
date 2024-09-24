@@ -2,5 +2,10 @@
 members = ["cli-clap", "multibinary"]
 resolver = "2"
 
+[workspace.package]
+authors = ["J / Jacob Babich <jacobbabichpublic+git@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/babichjacob/ac-qu-ai-nt"
+
 [workspace.dependencies]
 clap = "4"
