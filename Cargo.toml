@@ -1,0 +1,6 @@
+[workspace]
+members = ["cli-clap", "multibinary"]
+resolver = "2"
+
+[workspace.dependencies]
+clap = "4"

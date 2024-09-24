@@ -1,0 +1,11 @@
+[package]
+name = "ac-qu-ai-nt"
+version = "0.0.1"
+edition = "2021"
+
+[features]
+default = ["cli-clap"]
+cli-clap = ["dep:ac-qu-ai-nt-cli-clap"]
+
+[dependencies]
+ac-qu-ai-nt-cli-clap = { version = "0.0.1", path = "../cli-clap", optional = true }
