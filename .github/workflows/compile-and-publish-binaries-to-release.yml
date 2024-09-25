@@ -1,0 +1,29 @@
+name: Compile and publish binaries whenever a new release is cut
+
+permissions:
+  contents: write
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  compile-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Build for release
+        run: cargo build --release --verbose
+
+      - uses: taiki-e/upload-rust-binary-action@v1
+        with:
+          bin: ac-qu-ai-nt
+          token: ${{ secrets.GITHUB_TOKEN }}
