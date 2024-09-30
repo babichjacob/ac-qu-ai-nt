@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::{fs::create_dir_all, io::ErrorKind, path::PathBuf};
 
 use clap::Parser;
 
@@ -13,7 +13,27 @@ struct Args {
 }
 
 fn main() {
-    let args = Args::parse();
+    let Args {
+        application_data_directory,
+    } = Args::parse();
+
+    match create_dir_all(&application_data_directory) {
+        Ok(()) => {}
+        Err(e) if e.kind() == ErrorKind::AlreadyExists => {}
+        Err(e) => {
+            panic!("{}", e);
+        }
+    }
+
+    let tracing_directory = application_data_directory.join("logs");
+
+    match create_dir_all(&tracing_directory) {
+        Ok(()) => {}
+        Err(e) if e.kind() == ErrorKind::AlreadyExists => {}
+        Err(e) => {
+            panic!("{}", e);
+        }
+    }
 
     #[cfg(feature = "cli-clap")]
     ac_qu_ai_nt_cli_clap::main();
