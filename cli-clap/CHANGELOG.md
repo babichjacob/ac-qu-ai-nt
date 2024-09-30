@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-cli-clap-v0.0.3...ac-qu-ai-nt-cli-clap-v0.0.4) - 2024-09-30
+
+### Added
+
+- make `tracing` a crate feature and make it a default feature of the current crates
+
+### Other
+
+- *(cli-clap)* or at least I hope chore is the right conventional commit type to use - switch `println!` to a `tracing` invocation (to verify that the tracing infrastructure works)
+
 ## [0.0.3](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-cli-clap-v0.0.2...ac-qu-ai-nt-cli-clap-v0.0.3) - 2024-09-30
 
 ### Other

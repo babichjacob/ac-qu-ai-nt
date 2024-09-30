@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "ac-qu-ai-nt"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "ac-qu-ai-nt-cli-clap",
  "clap",
@@ -14,7 +14,7 @@ dependencies = [
 
 [[package]]
 name = "ac-qu-ai-nt-cli-clap"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "clap",
  "tracing",
