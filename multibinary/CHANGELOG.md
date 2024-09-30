@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.3](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.2...ac-qu-ai-nt-v0.0.3) - 2024-09-30
+
+### Added
+
+- [**breaking**] this is the correct way to format a breaking change unlike my previous commit - ensure the application data directory, and the tracing directory within it, exists
+
+### Other
+
+- add `tracing` and `tracing-subscriber` as dependencies
+- reserve a data directory for the application
+
 ## [0.0.2](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.1...ac-qu-ai-nt-v0.0.2) - 2024-09-25
 
 ### Other

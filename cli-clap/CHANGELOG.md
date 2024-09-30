@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.3](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-cli-clap-v0.0.2...ac-qu-ai-nt-cli-clap-v0.0.3) - 2024-09-30
+
+### Other
+
+- add `tracing` and `tracing-subscriber` as dependencies
+
 ## [0.0.2](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-cli-clap-v0.0.1...ac-qu-ai-nt-cli-clap-v0.0.2) - 2024-09-25
 
 ### Other
