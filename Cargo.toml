@@ -4,7 +4,7 @@ resolver = "2"
 
 [workspace.package]
 authors = ["J / Jacob Babich <jacobbabichpublic+git@gmail.com>"]
-license = "MIT OR Apache-2.0"
+license = "Apache-2.0 OR MIT OR Unlicense"
 repository = "https://github.com/babichjacob/ac-qu-ai-nt"
 
 [workspace.dependencies]
