@@ -17,6 +17,9 @@ fn main() {
         application_data_directory,
     } = Args::parse();
 
+    #[cfg(feature = "tracing")]
+    tracing_subscriber::fmt::init();
+
     match create_dir_all(&application_data_directory) {
         Ok(()) => {}
         Err(e) if e.kind() == ErrorKind::AlreadyExists => {}
