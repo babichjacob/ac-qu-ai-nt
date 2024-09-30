@@ -17,3 +17,4 @@ cli-clap = ["dep:ac-qu-ai-nt-cli-clap"]
 ac-qu-ai-nt-cli-clap = { version = "0.0.2", path = "../cli-clap", optional = true }
 clap = { workspace = true, features = ["derive", "env"] }
 dirs-next = "2.0.0"
+tracing-subscriber = "0.3.18"
