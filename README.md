@@ -1,8 +1,49 @@
-# ac-qu-ai-nt
-
 `ac-qu-ai-nt` is a project I'm working on, using artificial intelligence to break down the user's query, acquire knowledge, and transfer insights to the user('s mind).
 
 This is a placeholder while I take small steps to build out the project.
+
+# Installation
+
+## Automatically Updatable
+You won't find it very useful yet, because it doesn't really do much of anything, but you can install the multibinary with [Binstall](https://github.com/cargo-bins/cargo-binstall). This means you don't need to have the same development environment (which will require the Vulkan SDK and CUDA Toolkit in the future) in order to use the program, because you'll just download a precompiled executable.
+
+```sh
+cargo-binstall -y ac-qu-ai-nt
+```
+
+Install [`cargo-update`](https://github.com/nabijaczleweli/cargo-update) and periodically run
+```sh
+cargo install-update --all
+```
+in order to keep this program up to date.
+
+I'm not sure if you need a Rust compiler installed for either or if they can work standalone.
+
+## Just the Executable
+Head to [the Releases page](https://github.com/babichjacob/ac-qu-ai-nt/releases) and download the asset corresponding to your computer architecture and operating system.
+
+Decompress the archive and place the executable contained within it somewhere useful to you (e.g. in a directory in [your `PATH` variable](https://superuser.com/a/284351)).
+
+# Usage
+If it's your preference, you should be able to double click the executable in the folder to be able to run it (defaulting to launching a graphical interface (once I actually make one lol)).
+
+You could also type
+```sh
+ac-qu-ai-nt
+```
+on the command line to run it. This is also a way to launch a GUI (once there actually is one) for the application.
+
+## Command Line Interface
+It's going to be a goal of this project for there to be feature parity between the GUI, CLI, and TUI.
+
+If you want to use its command line interface, start with
+
+```sh
+ac-qu-ai-nt cli
+```
+to see what capabilities are available.
+
+(This is an alias for `ac-qu-ai-nt cli-clap` to allow the possibility of experimenting with different implementations of the same type of interface.)
 
 # Contributing
 
