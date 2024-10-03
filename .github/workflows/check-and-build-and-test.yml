@@ -52,11 +52,11 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - name: Check (minimal dependencies)
-        run: cargo minimal-versions check --workspace
+      - name: Check (direct minimal dependencies)
+        run: cargo minimal-versions check --direct --workspace
 
-      - name: Build (minimal dependencies)
-        run: cargo minimal-versions build --workspace
+      - name: Build (direct minimal dependencies)
+        run: cargo minimal-versions build --direct --workspace
 
-      - name: Test (minimal dependencies)
-        run: cargo minimal-versions test --workspace
+      - name: Test (direct minimal dependencies)
+        run: cargo minimal-versions test --direct --workspace
