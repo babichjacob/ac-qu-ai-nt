@@ -46,6 +46,8 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Install cargo-minimal-versions
+        uses: taiki-e/install-action@cargo-hack
+      - name: Install cargo-minimal-versions
         uses: taiki-e/install-action@cargo-minimal-versions
 
       - uses: Swatinem/rust-cache@v2
