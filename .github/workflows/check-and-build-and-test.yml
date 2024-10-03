@@ -35,3 +35,26 @@ jobs:
 
       - name: Test
         run: cargo nextest run
+
+  minimal-dependencies-check-build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install cargo-minimal-versions
+        uses: taiki-e/install-action@cargo-minimal-versions
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Check (minimal dependencies)
+        run: cargo minimal-versions check --workspace
+
+      - name: Build (minimal dependencies)
+        run: cargo minimal-versions build --workspace
+
+      - name: Test (minimal dependencies)
+        run: cargo minimal-versions test --workspace
