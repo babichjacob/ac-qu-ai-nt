@@ -11,30 +11,55 @@ env:
 
 jobs:
   check-build-and-test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        supporteds:
+          - runner: macos-latest
+            target: aarch64-apple-darwin
+          - runner: macos-latest
+            target: x86_64-apple-darwin
+          - runner: ubuntu-latest
+            target: aarch64-unknown-linux-gnu
+          - runner: ubuntu-latest
+            target: aarch64-unknown-linux-musl
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+          - runner: windows-latest
+            target: aarch64-pc-windows-gnu
+          - runner: windows-latest
+            target: aarch64-pc-windows-msvc
+          - runner: windows-latest
+            target: x86_64-pc-windows-gnu
+          - runner: windows-latest
+            target: x86_64-pc-windows-msvc
+    runs-on: ${{ matrix.supporteds.runner }}
     timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Rust toolchain
+      - name: Install stable Rust toolchain
         uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.supporteds.target }}
       - name: Install Nextest
         uses: taiki-e/install-action@cargo-nextest
 
       - uses: Swatinem/rust-cache@v2
 
       - name: Check
-        run: cargo check --verbose
+        run: cargo check --verbose --target ${{ matrix.supporteds.target }}
 
       - name: Formatting
-        run: cargo fmt --check --verbose
+        run: cargo fmt --check --verbose --target ${{ matrix.supporteds.target }}
 
       - name: Build
-        run: cargo build --verbose
+        run: cargo build --verbose --target ${{ matrix.supporteds.target }}
 
       - name: Test
-        run: cargo nextest run
+        run: cargo nextest run --target ${{ matrix.supporteds.target }}
 
   minimal-dependencies-check-build-and-test:
     runs-on: ubuntu-latest
