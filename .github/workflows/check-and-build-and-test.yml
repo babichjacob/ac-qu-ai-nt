@@ -10,6 +10,19 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  formatting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install stable Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Formatting
+        run: cargo fmt --check --verbose
+
   check-build-and-test:
     strategy:
       matrix:
@@ -51,9 +64,6 @@ jobs:
 
       - name: Check
         run: cargo check --verbose --target ${{ matrix.supporteds.target }}
-
-      - name: Formatting
-        run: cargo fmt --check --verbose --target ${{ matrix.supporteds.target }}
 
       - name: Build
         run: cargo build --verbose --target ${{ matrix.supporteds.target }}
