@@ -29,32 +29,51 @@ jobs:
         supporteds:
           - runner: macos-latest
             target: aarch64-apple-darwin
+            toolchain: stable
+
           - runner: macos-latest
             target: x86_64-apple-darwin
+            toolchain: stable
+
           - runner: ubuntu-latest
             target: aarch64-unknown-linux-gnu
+            toolchain: stable
+
           - runner: ubuntu-latest
             target: aarch64-unknown-linux-musl
+            toolchain: stable
+
           - runner: ubuntu-latest
             target: x86_64-unknown-linux-gnu
+            toolchain: stable
+
           - runner: ubuntu-latest
             target: x86_64-unknown-linux-musl
+            toolchain: stable
+
           - runner: windows-latest
             target: aarch64-pc-windows-gnu
+            toolchain: nightly
+
           - runner: windows-latest
             target: aarch64-pc-windows-msvc
+            toolchain: stable
+
           - runner: windows-latest
             target: x86_64-pc-windows-gnu
+            toolchain: stable
+
           - runner: windows-latest
             target: x86_64-pc-windows-msvc
+            toolchain: stable
     runs-on: ${{ matrix.supporteds.runner }}
     timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install stable Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - name: Install ${{ matrix.supporteds.toolchain }} Rust toolchain
+        uses: dtolnay/rust-toolchain@${{ matrix.supporteds.toolchain }}
         with:
           targets: ${{ matrix.supporteds.target }}
       - name: Install Nextest
