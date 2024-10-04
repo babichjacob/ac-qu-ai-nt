@@ -58,7 +58,6 @@ jobs:
 
           - runner: windows-latest
             target: x86_64-pc-windows-msvc
-      fail-fast: false # WIP: debugging
     name: Check and build ${{ matrix.supporteds.target }} (on ${{ matrix.supporteds.runner }})
     runs-on: ${{ matrix.supporteds.runner }}
     timeout-minutes: 5
