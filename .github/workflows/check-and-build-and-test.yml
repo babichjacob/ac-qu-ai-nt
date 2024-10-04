@@ -3,6 +3,14 @@ name: Check, build, and test
 on:
   push:
     branches: ["main"]
+    # This workflow is definitely expensive for GitHub,
+    # so let's not let files that won't affect the project's ability to build and test trigger it
+    paths-ignore:
+      - .github/**
+      - **/.gitignore
+      - **/CHANGELOG.md
+      - **/README.md
+      - **/LICENSE-*
   pull_request:
     branches: ["main"]
 
