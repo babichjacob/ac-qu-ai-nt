@@ -23,7 +23,7 @@ jobs:
       - name: Formatting
         run: cargo fmt --check --verbose
 
-  check-build-and-test:
+  check-and-build:
     strategy:
       matrix:
         supporteds:
@@ -59,7 +59,7 @@ jobs:
           - runner: windows-latest
             target: x86_64-pc-windows-msvc
       fail-fast: false # WIP: debugging
-    name: ${{ matrix.supporteds.target }} (on ${{ matrix.supporteds.runner }})
+    name: Check and build ${{ matrix.supporteds.target }} (on ${{ matrix.supporteds.runner }})
     runs-on: ${{ matrix.supporteds.runner }}
     timeout-minutes: 15
     env:
@@ -78,8 +78,6 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.supporteds.target }}
-      - name: Install Nextest
-        uses: taiki-e/install-action@cargo-nextest
 
       - uses: Swatinem/rust-cache@v2
 
@@ -88,6 +86,57 @@ jobs:
 
       - name: Build
         run: cargo build --verbose --target ${{ matrix.supporteds.target }}
+
+  test:
+    strategy:
+      matrix:
+        supporteds:
+          - runner: macos-latest
+            target: aarch64-apple-darwin
+
+          - runner: macos-latest
+            target: x86_64-apple-darwin
+
+          # Not able to be tested in GitHub Actions (without emulation, at least)
+          # - runner: ubuntu-latest
+          #   target: aarch64-unknown-linux-gnu
+
+          # Not able to be tested in GitHub Actions (without emulation, at least)
+          # - runner: ubuntu-latest
+          #   target: aarch64-unknown-linux-musl
+
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+
+          # Not able to be tested in GitHub Actions (without emulation, at least)
+          # - runner: windows-latest
+          #   target: aarch64-pc-windows-gnullvm
+
+          # Not able to be tested in GitHub Actions (without emulation, at least)
+          # - runner: windows-latest
+          #   target: aarch64-pc-windows-msvc
+
+          - runner: windows-latest
+            target: x86_64-pc-windows-gnu
+
+          - runner: windows-latest
+            target: x86_64-pc-windows-msvc
+    name: Test ${{ matrix.supporteds.target }} (on ${{ matrix.supporteds.runner }})
+    runs-on: ${{ matrix.supporteds.runner }}
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install stable Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.supporteds.target }}
+
+      - uses: Swatinem/rust-cache@v2
 
       - name: Test
         run: cargo nextest run --target ${{ matrix.supporteds.target }}
