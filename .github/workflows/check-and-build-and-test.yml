@@ -47,8 +47,9 @@ jobs:
           - runner: ubuntu-latest
             target: x86_64-unknown-linux-musl
 
-          - runner: windows-latest
-            target: aarch64-pc-windows-gnullvm
+          # I would like to support this but I don't know how to install the dependencies to be able to
+          # - runner: windows-latest
+          #   target: aarch64-pc-windows-gnullvm
 
           - runner: windows-latest
             target: aarch64-pc-windows-msvc
