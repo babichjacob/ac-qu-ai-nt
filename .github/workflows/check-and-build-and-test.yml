@@ -62,7 +62,8 @@ jobs:
     timeout-minutes: 15
     env:
       # https://github.com/rust-lang/stacker/issues/80#issuecomment-1547991131
-      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER: aarch64-linux-gnu-gcc
+      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
+      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER: aarch64-linux-gnu-gcc # TODO: shouldn't this be something to do with musl, not gcc?
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
