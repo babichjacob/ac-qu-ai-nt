@@ -56,8 +56,12 @@ jobs:
 
           - runner: windows-latest
             target: x86_64-pc-windows-msvc
+      fail-fast: false # WIP: debugging
     runs-on: ${{ matrix.supporteds.runner }}
     timeout-minutes: 15
+    env:
+      # https://github.com/rust-lang/stacker/issues/80#issuecomment-1547991131
+      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER: aarch64-linux-gnu-gcc
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
