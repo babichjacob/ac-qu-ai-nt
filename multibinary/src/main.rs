@@ -58,5 +58,9 @@ fn main() {
     match command {
         #[cfg(feature = "cli-clap")]
         Command::CliClap => ac_qu_ai_nt_cli_clap::main(),
+        #[cfg(feature = "gui-eframe")]
+        Command::GuiEframe => todo!(),
+        #[cfg(feature = "tui-ratatui")]
+        Command::TuiRatatui => todo!(),
     }
 }
