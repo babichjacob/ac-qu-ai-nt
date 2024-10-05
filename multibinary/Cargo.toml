@@ -11,7 +11,11 @@ repository = { workspace = true }
 
 [features]
 default = ["cli-clap", "gui-eframe", "tui-ratatui", "tracing"]
+
 cli-clap = ["dep:ac-qu-ai-nt-cli-clap"]
+gui-eframe = []
+tui-ratatui = []
+
 tracing = ["dep:tracing-subscriber", "ac-qu-ai-nt-cli-clap?/tracing"]
 
 [dependencies]
