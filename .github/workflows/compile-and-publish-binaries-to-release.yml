@@ -9,8 +9,12 @@ on:
 
 jobs:
   compile-and-publish:
+    if: startsWith(github.event.release.tag_name, format("{0}-v", matrix.crate))
     strategy:
       matrix:
+        crate:
+          - ac-qu-ai-nt
+          - ac-qu-ai-nt-cli-clap
         supporteds:
           - runner: macos-latest
             target: aarch64-apple-darwin
@@ -68,6 +72,6 @@ jobs:
 
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: ac-qu-ai-nt
+          bin: ${{ matrix.crate }}
           token: ${{ secrets.GITHUB_TOKEN }}
           target: ${{ matrix.supporteds.target }}
