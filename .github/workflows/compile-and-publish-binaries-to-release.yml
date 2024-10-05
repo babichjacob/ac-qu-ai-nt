@@ -9,8 +9,48 @@ on:
 
 jobs:
   compile-and-publish:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    strategy:
+      matrix:
+        supporteds:
+          - runner: macos-latest
+            target: aarch64-apple-darwin
+
+          - runner: macos-latest
+            target: x86_64-apple-darwin
+
+          - install_prerequisite: sudo apt-get update && sudo apt-get install gcc-aarch64-linux-gnu
+            runner: ubuntu-latest
+            target: aarch64-unknown-linux-gnu
+
+          - install_prerequisite: sudo apt-get update && sudo apt-get install gcc-aarch64-linux-gnu
+            runner: ubuntu-latest
+            target: aarch64-unknown-linux-musl
+
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+
+          # I would like to support this but I don't know how to install the dependencies to be able to
+          # - runner: windows-latest
+          #   target: aarch64-pc-windows-gnullvm
+
+          - runner: windows-latest
+            target: aarch64-pc-windows-msvc
+
+          - runner: windows-latest
+            target: x86_64-pc-windows-gnu
+
+          - runner: windows-latest
+            target: x86_64-pc-windows-msvc
+    name: Compile ${{ matrix.supporteds.target }} for release (on ${{ matrix.supporteds.runner }})
+    runs-on: ${{ matrix.supporteds.runner }}
+    timeout-minutes: 10
+    env:
+      # https://github.com/rust-lang/stacker/issues/80#issuecomment-1547991131
+      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
+      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER: aarch64-linux-gnu-gcc # TODO: shouldn't this be something to do with musl, not gcc?
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,3 +70,4 @@ jobs:
         with:
           bin: ac-qu-ai-nt
           token: ${{ secrets.GITHUB_TOKEN }}
+          target: ${{ matrix.supporteds.target }}
