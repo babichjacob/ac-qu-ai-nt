@@ -1,4 +1,4 @@
 pub fn main() {
     #[cfg(feature = "tracing")]
-    tracing::info!("Hello, world!");
+    tracing::info!("What's up, world?");
 }
