@@ -9,12 +9,8 @@ on:
 
 jobs:
   compile-and-publish:
-    if: ${{ startsWith(github.event.release.tag_name, format('{0}-v', matrix.crate)) }}
     strategy:
       matrix:
-        crate:
-          - ac-qu-ai-nt
-          - ac-qu-ai-nt-cli-clap
         supporteds:
           - runner: macos-latest
             target: aarch64-apple-darwin
@@ -70,8 +66,17 @@ jobs:
       - name: Build for release
         run: cargo build --release --verbose
 
-      - uses: taiki-e/upload-rust-binary-action@v1
+      # Have to do it like this because of https://github.com/actions/runner/issues/1985
+      - if: startsWith(github.event.release.tag_name, 'ac-qu-ai-nt-v')
+        uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: ${{ matrix.crate }}
+          bin: ac-qu-ai-nt
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: ${{ matrix.supporteds.target }}
+
+      - if: startsWith(github.event.release.tag_name, 'ac-qu-ai-nt-cli-clap-v')
+        uses: taiki-e/upload-rust-binary-action@v1
+        with:
+          bin: ac-qu-ai-nt-cli-clap
           token: ${{ secrets.GITHUB_TOKEN }}
           target: ${{ matrix.supporteds.target }}
