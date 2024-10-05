@@ -88,6 +88,9 @@ jobs:
           targets: ${{ matrix.supporteds.target }}
 
       - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ matrix.supporteds.target }}
+          cache-on-failure: "true"
 
       - name: Check
         run: cargo check --verbose --target ${{ matrix.supporteds.target }}

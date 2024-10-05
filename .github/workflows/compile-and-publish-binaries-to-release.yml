@@ -19,6 +19,9 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ matrix.supporteds.target }}
+          cache-on-failure: "true"
 
       - name: Build for release
         run: cargo build --release --verbose
