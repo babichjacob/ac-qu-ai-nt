@@ -9,7 +9,7 @@ on:
 
 jobs:
   compile-and-publish:
-    if: startsWith(github.event.release.tag_name, format("{0}-v", matrix.crate))
+    if: startsWith(github.event.release.tag_name, format('{0}-v', matrix.crate))
     strategy:
       matrix:
         crate:
