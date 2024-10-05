@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "ac-qu-ai-nt"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "ac-qu-ai-nt-cli-clap",
  "clap",
