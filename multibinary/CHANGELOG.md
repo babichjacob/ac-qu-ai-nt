@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.5...ac-qu-ai-nt-v0.0.6) - 2024-10-05
+
+### Fixed
+
+- cover the new cases of `Command` for `GuiEframe` and `TuiRatatui`
+
+### Other
+
+- correctly add `gui-eframe` and `tui-ratatui` as features this time around
+- add `gui-eframe` and `tui-ratatui` as subcommands with aliases `gui` and `tui` respectively
+- add `gui-eframe` and `tui-ratatui` as features
+
 ## [0.0.5](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.4...ac-qu-ai-nt-v0.0.5) - 2024-10-05
 
 ### Other
