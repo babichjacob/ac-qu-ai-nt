@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-cli-clap-v0.0.4...ac-qu-ai-nt-cli-clap-v0.0.5) - 2024-10-05
+
+### Other
+
+- change `Hello, world!` to `What's up world?` to allow me to cut a release
+
 ## [0.0.4](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-cli-clap-v0.0.3...ac-qu-ai-nt-cli-clap-v0.0.4) - 2024-09-30
 
 ### Added
