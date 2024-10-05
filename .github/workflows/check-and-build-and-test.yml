@@ -34,6 +34,21 @@ jobs:
   check-and-build:
     strategy:
       matrix:
+        commands:
+          - build:
+              name: "Build with minimal versions of direct dependencies"
+              run: cargo minimal-versions build --direct --verbose
+            check:
+              name: "Check with minimal versions of direct dependencies"
+              run: cargo minimal-versions check --direct --verbose
+
+          - build:
+              name: "Build (with latest (typically) versions of dependencies)"
+              run: cargo build --verbose
+            check:
+              name: "Check (with latest (typically) versions of dependencies)"
+              run: cargo check --verbose
+
         supporteds:
           - runner: macos-latest
             target: aarch64-apple-darwin
@@ -87,16 +102,21 @@ jobs:
         with:
           targets: ${{ matrix.supporteds.target }}
 
+      - name: Install cargo-hack
+        uses: taiki-e/install-action@cargo-hack
+      - name: Install cargo-minimal-versions
+        uses: taiki-e/install-action@cargo-minimal-versions
+
       - uses: Swatinem/rust-cache@v2
         with:
           shared-key: ${{ matrix.supporteds.target }}
           cache-on-failure: "true"
 
-      - name: Check
-        run: cargo check --verbose --target ${{ matrix.supporteds.target }}
+      - name: ${{ matrix.commands.check.name }}
+        run: ${{ matrix.commands.check.run }} --target ${{ matrix.supporteds.target }}
 
-      - name: Build
-        run: cargo build --verbose --target ${{ matrix.supporteds.target }}
+      - name: ${{ matrix.commands.build.name }}
+        run: ${{ matrix.commands.build.run }} --target ${{ matrix.supporteds.target }}
 
   test:
     strategy:
@@ -154,28 +174,3 @@ jobs:
 
       - name: Test
         run: cargo nextest run --target ${{ matrix.supporteds.target }}
-
-  minimal-dependencies-check-build-and-test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
-      - name: Install cargo-minimal-versions
-        uses: taiki-e/install-action@cargo-hack
-      - name: Install cargo-minimal-versions
-        uses: taiki-e/install-action@cargo-minimal-versions
-
-      - uses: Swatinem/rust-cache@v2
-
-      - name: Check (minimal direct dependencies)
-        run: cargo minimal-versions check --direct --workspace
-
-      - name: Build (minimal direct dependencies)
-        run: cargo minimal-versions build --direct --workspace
-
-      - name: Test (minimal direct dependencies)
-        run: cargo minimal-versions test --direct --workspace
