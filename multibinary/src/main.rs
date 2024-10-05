@@ -1,6 +1,6 @@
 use std::{fs::create_dir_all, io::ErrorKind, path::PathBuf};
 
-use clap::Parser;
+use clap::{Parser, Subcommand};
 
 #[derive(Debug, Parser)]
 struct Args {
@@ -10,11 +10,22 @@ struct Args {
         default_value_os_t = dirs_next::data_local_dir().expect("sorry but you're on a platform where dirs_next::data_local_dir() returned None, so please specify a data directory for the application").join("ac-qu-ai-nt")
     )]
     application_data_directory: PathBuf,
+
+    #[command(subcommand)]
+    command: Command,
+}
+
+#[derive(Debug, Subcommand)]
+enum Command {
+    #[cfg(feature = "cli-clap")]
+    #[command(alias = "cli")]
+    CliClap,
 }
 
 fn main() {
     let Args {
         application_data_directory,
+        command,
     } = Args::parse();
 
     #[cfg(feature = "tracing")]
@@ -38,6 +49,8 @@ fn main() {
         }
     }
 
-    #[cfg(feature = "cli-clap")]
-    ac_qu_ai_nt_cli_clap::main();
+    match command {
+        #[cfg(feature = "cli-clap")]
+        Command::CliClap => ac_qu_ai_nt_cli_clap::main(),
+    }
 }
