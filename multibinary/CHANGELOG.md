@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.7](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.6...ac-qu-ai-nt-v0.0.7) - 2024-10-05
+
+### Other
+
+- updated the following local packages: ac-qu-ai-nt-cli-clap
+
 ## [0.0.6](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.5...ac-qu-ai-nt-v0.0.6) - 2024-10-05
 
 ### Fixed
