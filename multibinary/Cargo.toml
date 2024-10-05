@@ -10,7 +10,7 @@ license = { workspace = true }
 repository = { workspace = true }
 
 [features]
-default = ["cli-clap", "tracing"]
+default = ["cli-clap", "gui-eframe", "tui-ratatui", "tracing"]
 cli-clap = ["dep:ac-qu-ai-nt-cli-clap"]
 tracing = ["dep:tracing-subscriber", "ac-qu-ai-nt-cli-clap?/tracing"]
 
