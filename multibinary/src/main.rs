@@ -20,6 +20,12 @@ enum Command {
     #[cfg(feature = "cli-clap")]
     #[command(alias = "cli")]
     CliClap,
+    #[cfg(feature = "gui-eframe")]
+    #[command(alias = "gui")]
+    GuiEframe,
+    #[cfg(feature = "tui-ratatui")]
+    #[command(alias = "tui")]
+    TuiRatatui,
 }
 
 fn main() {
