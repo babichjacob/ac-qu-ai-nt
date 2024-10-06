@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "ac-qu-ai-nt"
-version = "0.0.9"
+version = "0.0.10"
 dependencies = [
  "ac-qu-ai-nt-cli-clap",
  "ac-qu-ai-nt-gui-eframe",
@@ -16,7 +16,7 @@ dependencies = [
 
 [[package]]
 name = "ac-qu-ai-nt-cli-clap"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "clap",
  "tracing",
@@ -31,14 +31,14 @@ dependencies = [
 
 [[package]]
 name = "ac-qu-ai-nt-gui-eframe"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "tracing",
 ]
 
 [[package]]
 name = "ac-qu-ai-nt-tui-ratatui"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "tracing",
 ]
