@@ -55,7 +55,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Rust toolchain
+      - name: Install prerequisite build chain
+        if: matrix.supporteds.install_prerequisite
+        run: ${{ matrix.supporteds.install_prerequisite }}
+
+      - name: Install stable Rust toolchain
         uses: dtolnay/rust-toolchain@stable
 
       - uses: Swatinem/rust-cache@v2
