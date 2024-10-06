@@ -36,10 +36,12 @@ jobs:
       matrix:
         minimal_or_latest:
           - build_command: cargo minimal-versions build --direct --verbose
+            cache_key: minimal
             check_command: cargo minimal-versions check --direct --verbose
             job_name_suffix: with minimal versions of direct dependencies
 
           - build_command: cargo build --verbose
+            cache_key: latest
             check_command: cargo check --verbose
             job_name_suffix: (with latest (typically) versions of dependencies)
 
@@ -103,7 +105,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          shared-key: ${{ matrix.supporteds.target }}
+          shared-key: ${{ matrix.supporteds.target }}-${{ matrix.minimal_or_latest.cache_key }}
           cache-on-failure: "true"
 
       - name: Check
