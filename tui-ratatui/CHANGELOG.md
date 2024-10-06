@@ -12,3 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - initialize `core`, `gui-eframe`, and `tui-ratatui` crates and use them in the `multibinary`
+
+### Other
+
+- release
+
+## [0.0.1](https://github.com/babichjacob/ac-qu-ai-nt/releases/tag/ac-qu-ai-nt-tui-ratatui-v0.0.1) - 2024-10-06
+
+### Added
+
+- initialize `core`, `gui-eframe`, and `tui-ratatui` crates and use them in the `multibinary`
