@@ -1,7 +1,7 @@
 [package]
 name = "ac-qu-ai-nt-tui-ratatui"
 description = "A TUI (written with Ratatui) for ac-qu-ai-nt"
-version = "0.0.3"
+version = "0.0.4"
 edition = "2021"
 rust-version = "1.76"
 
