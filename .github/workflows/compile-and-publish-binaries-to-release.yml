@@ -64,7 +64,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          shared-key: ${{ matrix.supporteds.target }}
+          shared-key: ${{ matrix.supporteds.target }}-latest
           cache-on-failure: "true"
 
       - name: Build for release
