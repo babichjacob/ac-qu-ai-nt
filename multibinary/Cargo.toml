@@ -9,6 +9,9 @@ authors = { workspace = true }
 license = { workspace = true }
 repository = { workspace = true }
 
+[package.metadata.binstall]
+pkg-url = "{ repo }/releases/download/{ name }-v{ version }/{ name }-{ target }{ archive-suffix }"
+
 [features]
 default = ["cli-clap", "gui-eframe", "tui-ratatui", "tracing"]
 
