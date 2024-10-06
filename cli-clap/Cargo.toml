@@ -1,7 +1,7 @@
 [package]
 name = "ac-qu-ai-nt-cli-clap"
 description = "A CLI (written with clap) for ac-qu-ai-nt"
-version = "0.0.6"
+version = "0.0.7"
 edition = "2021"
 rust-version = "1.76"
 
