@@ -34,20 +34,14 @@ jobs:
   check-and-build:
     strategy:
       matrix:
-        commands:
-          - build:
-              name: "Build with minimal versions of direct dependencies"
-              run: cargo minimal-versions build --direct --verbose
-            check:
-              name: "Check with minimal versions of direct dependencies"
-              run: cargo minimal-versions check --direct --verbose
+        minimal_or_latest:
+          - build_command: cargo minimal-versions build --direct --verbose
+            check_command: cargo minimal-versions check --direct --verbose
+            job_name_suffix: with minimal versions of direct dependencies
 
-          - build:
-              name: "Build (with latest (typically) versions of dependencies)"
-              run: cargo build --verbose
-            check:
-              name: "Check (with latest (typically) versions of dependencies)"
-              run: cargo check --verbose
+          - build_command: cargo build --verbose
+            check_command: cargo check --verbose
+            job_name_suffix: (with latest (typically) versions of dependencies)
 
         supporteds:
           - runner: macos-latest
@@ -82,7 +76,7 @@ jobs:
 
           - runner: windows-latest
             target: x86_64-pc-windows-msvc
-    name: Check and build ${{ matrix.supporteds.target }} (on ${{ matrix.supporteds.runner }})
+    name: Check and build ${{ matrix.supporteds.target }} (on ${{ matrix.supporteds.runner }}) ${{ matrix.minimal_or_latest.job_name_suffix }}
     runs-on: ${{ matrix.supporteds.runner }}
     timeout-minutes: 5
     env:
@@ -112,11 +106,11 @@ jobs:
           shared-key: ${{ matrix.supporteds.target }}
           cache-on-failure: "true"
 
-      - name: ${{ matrix.commands.check.name }}
-        run: ${{ matrix.commands.check.run }} --target ${{ matrix.supporteds.target }}
+      - name: Check
+        run: ${{ matrix.minimal_or_latest.check_command }} --target ${{ matrix.supporteds.target }}
 
-      - name: ${{ matrix.commands.build.name }}
-        run: ${{ matrix.commands.build.run }} --target ${{ matrix.supporteds.target }}
+      - name: Build
+        run: ${{ matrix.minimal_or_latest.build_command }} --target ${{ matrix.supporteds.target }}
 
   test:
     strategy:
