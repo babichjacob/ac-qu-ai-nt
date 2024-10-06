@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.9](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.8...ac-qu-ai-nt-v0.0.9) - 2024-10-06
+
+### Other
+
+- updated the following local packages: ac-qu-ai-nt-gui-eframe, ac-qu-ai-nt-tui-ratatui
+
 ## [0.0.8](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.7...ac-qu-ai-nt-v0.0.8) - 2024-10-06
 
 ### Added
