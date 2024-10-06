@@ -13,13 +13,22 @@ repository = { workspace = true }
 default = ["cli-clap", "gui-eframe", "tui-ratatui", "tracing"]
 
 cli-clap = ["dep:ac-qu-ai-nt-cli-clap"]
-gui-eframe = []
-tui-ratatui = []
+gui-eframe = ["dep:ac-qu-ai-nt-gui-eframe"]
+tui-ratatui = ["dep:ac-qu-ai-nt-tui-ratatui"]
 
-tracing = ["dep:tracing-subscriber", "ac-qu-ai-nt-cli-clap?/tracing"]
+tracing = [
+    "dep:tracing-subscriber",
+    "ac-qu-ai-nt-cli-clap?/tracing",
+    "ac-qu-ai-nt-gui-eframe?/tracing",
+    "ac-qu-ai-nt-tui-ratatui?/tracing",
+]
 
 [dependencies]
 ac-qu-ai-nt-cli-clap = { version = "0.0.5", path = "../cli-clap", optional = true }
+ac-qu-ai-nt-gui-eframe = { version = "0.0.1", path = "../gui-eframe", optional = true }
+ac-qu-ai-nt-tui-ratatui = { version = "0.0.1", path = "../tui-ratatui", optional = true }
+
 clap = { workspace = true, features = ["derive", "env"] }
 dirs-next = "2.0.0"
+
 tracing-subscriber = { version = "0.3.18", optional = true }

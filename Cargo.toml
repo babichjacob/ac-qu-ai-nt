@@ -1,5 +1,5 @@
 [workspace]
-members = ["cli-clap", "multibinary"]
+members = ["core", "cli-clap", "gui-eframe", "tui-ratatui", "multibinary"]
 resolver = "2"
 
 [workspace.package]

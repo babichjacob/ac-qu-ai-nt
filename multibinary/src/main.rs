@@ -59,8 +59,8 @@ fn main() {
         #[cfg(feature = "cli-clap")]
         Command::CliClap => ac_qu_ai_nt_cli_clap::main(),
         #[cfg(feature = "gui-eframe")]
-        Command::GuiEframe => todo!(),
+        Command::GuiEframe => ac_qu_ai_nt_gui_eframe::main(),
         #[cfg(feature = "tui-ratatui")]
-        Command::TuiRatatui => todo!(),
+        Command::TuiRatatui => ac_qu_ai_nt_tui_ratatui::main(),
     }
 }
