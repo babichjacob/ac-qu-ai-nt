@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "ac-qu-ai-nt"
-version = "0.0.7"
+version = "0.0.8"
 dependencies = [
  "ac-qu-ai-nt-cli-clap",
  "ac-qu-ai-nt-gui-eframe",
