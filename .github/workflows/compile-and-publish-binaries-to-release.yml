@@ -84,3 +84,17 @@ jobs:
           bin: ac-qu-ai-nt-cli-clap
           token: ${{ secrets.GITHUB_TOKEN }}
           target: ${{ matrix.supporteds.target }}
+
+      - if: startsWith(github.event.release.tag_name, 'ac-qu-ai-nt-gui-eframe-v')
+        uses: taiki-e/upload-rust-binary-action@v1
+        with:
+          bin: ac-qu-ai-nt-gui-eframe
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: ${{ matrix.supporteds.target }}
+
+      - if: startsWith(github.event.release.tag_name, 'ac-qu-ai-nt-tui-ratatui-v')
+        uses: taiki-e/upload-rust-binary-action@v1
+        with:
+          bin: ac-qu-ai-nt-tui-ratatui
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: ${{ matrix.supporteds.target }}
