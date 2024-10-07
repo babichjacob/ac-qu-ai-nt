@@ -18,7 +18,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  formatting:
+  formatting-and-deny:
+    name: Check formatting and cargo-deny
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -30,6 +31,9 @@ jobs:
 
       - name: Formatting
         run: cargo fmt --check --verbose
+      
+      - name: cargo-deny
+        uses: EmbarkStudios/cargo-deny-action@v2
 
   check-and-build:
     strategy:
