@@ -219,6 +219,9 @@ jobs:
       - name: Install stable Rust toolchain
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Install cargo-msrv
+        uses: taiki-e/install-action@cargo-msrv
+
       - uses: Swatinem/rust-cache@v2
         with:
           shared-key: ${{ matrix.supporteds.target }}-latest-variable
