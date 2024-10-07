@@ -16,5 +16,6 @@ tracing = ["dep:tracing"]
 [dependencies]
 llama-cpp-2 = "=0.1.64"
 llama-cpp-sys-2 = "=0.1.64"
+snafu = { workspace = true }
 
 tracing = { workspace = true, optional = true }
