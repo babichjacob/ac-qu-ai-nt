@@ -74,8 +74,11 @@ jobs:
           - runner: windows-latest
             target: aarch64-pc-windows-msvc
 
-          - runner: windows-latest
-            target: x86_64-pc-windows-gnu
+          # I don't think supporting this is up to me
+          # I forgot where I learned this, but
+          # I don't think I can use a non-Rust dependency (i.e. llama.cpp) here
+          # - runner: windows-latest
+          #   target: x86_64-pc-windows-gnu
 
           - runner: windows-latest
             target: x86_64-pc-windows-msvc
@@ -148,8 +151,11 @@ jobs:
           # - runner: windows-latest
           #   target: aarch64-pc-windows-msvc
 
-          - runner: windows-latest
-            target: x86_64-pc-windows-gnu
+          # I don't think supporting this is up to me
+          # I forgot where I learned this, but
+          # I don't think I can use a non-Rust dependency (i.e. llama.cpp) here
+          # - runner: windows-latest
+          #   target: x86_64-pc-windows-gnu
 
           - runner: windows-latest
             target: x86_64-pc-windows-msvc
