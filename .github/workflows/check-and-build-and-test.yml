@@ -231,4 +231,4 @@ jobs:
       
       - name: Verify MSRV (minimum supported Rust version)
         run: cargo msrv verify
-        working-directory: ${{ strategy.crate_directory }}
+        working-directory: ${{ matrix.crate_directory }}
