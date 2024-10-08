@@ -31,7 +31,7 @@ jobs:
 
       - name: Formatting
         run: cargo fmt --check --verbose
-      
+
       - name: cargo-deny
         uses: EmbarkStudios/cargo-deny-action@v2
 
@@ -203,10 +203,10 @@ jobs:
         supporteds:
           - runner: macos-latest
             target: aarch64-apple-darwin
-          
+
           - runner: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-          
+
           - runner: windows-latest
             target: x86_64-pc-windows-msvc
     name: Verify MSRV of ${{ matrix.crate_directory }} for ${{ matrix.supporteds.target }} (on ${{ matrix.supporteds.runner }})
@@ -228,7 +228,7 @@ jobs:
         with:
           shared-key: ${{ matrix.supporteds.target }}-latest-variable
           cache-on-failure: "true"
-      
+
       - name: Verify MSRV (minimum supported Rust version)
         run: cargo msrv verify
         working-directory: ${{ matrix.crate_directory }}
