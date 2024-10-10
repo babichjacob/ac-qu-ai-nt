@@ -230,12 +230,5 @@ jobs:
           cache-on-failure: "true"
 
       - name: Verify declared MSRV (minimum supported Rust version)
-        id: verify
-        continue-on-error: true
         run: cargo msrv verify
-        working-directory: ${{ matrix.crate_directory }}
-
-      - name: Report actual MSRV and reason for failing the declared version
-        if: ${{ steps.verify.outcome == 'failure' }}
-        run: cargo msrv find && exit 1
         working-directory: ${{ matrix.crate_directory }}
