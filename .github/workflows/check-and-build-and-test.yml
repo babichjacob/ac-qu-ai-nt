@@ -230,5 +230,5 @@ jobs:
           cache-on-failure: "true"
 
       - name: Verify declared MSRV (minimum supported Rust version)
-        run: cargo msrv verify
+        run: cargo msrv verify --output-format json
         working-directory: ${{ matrix.crate_directory }}
