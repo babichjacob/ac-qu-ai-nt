@@ -211,7 +211,7 @@ jobs:
             target: x86_64-pc-windows-msvc
     name: Verify MSRV of ${{ matrix.crate_directory }} for ${{ matrix.supporteds.target }} (on ${{ matrix.supporteds.runner }})
     runs-on: ${{ matrix.supporteds.runner }}
-    timeout-minutes: 2
+    timeout-minutes: 4
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
