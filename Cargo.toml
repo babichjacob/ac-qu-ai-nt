@@ -11,6 +11,3 @@ repository = "https://github.com/babichjacob/ac-qu-ai-nt"
 clap = "4"
 snafu = "0.8"
 tracing = "0.1.23"
-
-[patch.crates-io]
-llama-cpp-2 = { version = "0.1.81", git = "https://github.com/babichjacob/llama-cpp-rs", branch = "fix-use-c-char-instead-of-i8" }
