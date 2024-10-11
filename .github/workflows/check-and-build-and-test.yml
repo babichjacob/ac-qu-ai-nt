@@ -216,7 +216,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Delete existing Rust stuff
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ matrix.supporteds.target }}-latest-variable
+          cache-on-failure: "true"
+
+      - name: Delete existing cargo stuff
         run: rm -rf ~/.cargo/bin
 
       - name: Install cargo-msrv
@@ -224,11 +229,6 @@ jobs:
         with:
           tool: cargo-msrv
 
-      - uses: Swatinem/rust-cache@v2
-        with:
-          shared-key: ${{ matrix.supporteds.target }}-latest-variable
-          cache-on-failure: "true"
-
       - name: Verify declared MSRV (minimum supported Rust version)
-        run: cargo msrv verify --output-format json
+        run: cargo-msrv verify --output-format json
         working-directory: ${{ matrix.crate_directory }}
