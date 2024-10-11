@@ -216,6 +216,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Delete existing Rust stuff
+        run: rm -rf ~/.cargo/bin
+
       - name: Install cargo-msrv
         uses: taiki-e/install-action@v2
         with:
