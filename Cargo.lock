@@ -134,9 +134,9 @@ checksum = "b048fb63fd8b5923fc5aa7b340d8e156aec7ec02f0c78fa8a6ddc2613f6f71de"
 
 [[package]]
 name = "cc"
-version = "1.1.28"
+version = "1.1.29"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2e80e3b6a3ab07840e1cae9b0666a63970dc28e8ed5ffbcdacbfc760c281bfc1"
+checksum = "58e804ac3194a48bb129643eb1d62fcc20d18c6b8c181704489353d13120bcd1"
 dependencies = [
  "jobserver",
  "libc",
@@ -384,7 +384,8 @@ checksum = "78b3ae25bc7c8c38cec158d1f2757ee79e9b3740fbc7ccf0e59e4b08d793fa89"
 [[package]]
 name = "llama-cpp-2"
 version = "0.1.82"
-source = "git+https://github.com/babichjacob/llama-cpp-rs?branch=fix-use-c-char-instead-of-i8#92bef3a7d2dbd49af9e22cf44a30b33bb0af9202"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e40528912f1212003f65912c0ad1d2d2d0302e53557e0ea3cd12b5706a9223ca"
 dependencies = [
  "enumflags2",
  "llama-cpp-sys-2",
@@ -395,7 +396,8 @@ dependencies = [
 [[package]]
 name = "llama-cpp-sys-2"
 version = "0.1.82"
-source = "git+https://github.com/babichjacob/llama-cpp-rs?branch=fix-use-c-char-instead-of-i8#92bef3a7d2dbd49af9e22cf44a30b33bb0af9202"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ccfde3214b7b8bcc25448198df1add0630695c7a2773a60400572bf5156b9335"
 dependencies = [
  "bindgen",
  "cc",
