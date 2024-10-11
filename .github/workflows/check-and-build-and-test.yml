@@ -221,10 +221,12 @@ jobs:
           shared-key: ${{ matrix.supporteds.target }}-latest-variable
           cache-on-failure: "true"
 
+      - name: Delete existing cargo
+        run: rm ~/.cargo/bin/carg*
       - name: Delete existing rust-analyzer
-        run: rm ~/.cargo/bin/rust-analyzer
+        run: rm ~/.cargo/bin/rust-analyze*
       - name: Delete existing rustfmt
-        run: rm ~/.cargo/bin/rustfmt
+        run: rm ~/.cargo/bin/rustfm*
 
       - run: rustup update
 
