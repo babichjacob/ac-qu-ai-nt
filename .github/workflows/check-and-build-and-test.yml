@@ -222,7 +222,9 @@ jobs:
           cache-on-failure: "true"
 
       - name: Delete existing cargo stuff
-        run: rm -rf ~/.cargo/bin
+        run: rm ~/.cargo/bin/rust-analyzer ~/.cargo/bin/rustfmt
+
+      - run: rustup update
 
       - name: Install cargo-msrv
         uses: taiki-e/install-action@v2
