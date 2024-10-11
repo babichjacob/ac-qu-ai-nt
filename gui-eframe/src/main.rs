@@ -1,1 +1,3 @@
-use ac_qu_ai_nt_gui_eframe::main;
+fn main() {
+    ac_qu_ai_nt_gui_eframe::main();
+}
