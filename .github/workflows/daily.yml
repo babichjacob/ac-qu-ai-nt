@@ -2,7 +2,7 @@ name: Daily
 
 on:
   schedule:
-    - cron: "4 23 * * *"
+    - cron: "41 23 * * *"
 
 jobs:
   audit:
