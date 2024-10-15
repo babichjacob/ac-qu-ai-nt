@@ -18,8 +18,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  formatting-and-deny-and-audit:
-    name: Check formatting, cargo-deny, and cargo-audit
+  audit-and-deny-and-clippy-and-formatting:
+    name: Check cargo-audit, cargo-deny, clippy, and formatting
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
@@ -31,14 +31,21 @@ jobs:
       - name: Install cargo-audit
         uses: taiki-e/install-action@cargo-audit
 
-      - name: Formatting
-        run: cargo fmt --check --verbose
+      - uses: Swatinem/rust-cache@v2
+
+      - name: cargo-audit
+        run: cargo-audit audit --deny warnings
 
       - name: cargo-deny
         uses: EmbarkStudios/cargo-deny-action@v2
 
-      - name: cargo-audit
-        run: cargo-audit audit --deny warnings
+      - name: Clippy
+        run: cargo clippy
+        env:
+          RUSTFLAGS: "--deny warnings"
+
+      - name: Formatting
+        run: cargo fmt --check --verbose
 
   check-and-build:
     strategy:
