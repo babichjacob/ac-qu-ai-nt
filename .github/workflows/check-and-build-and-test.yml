@@ -38,7 +38,7 @@ jobs:
         uses: EmbarkStudios/cargo-deny-action@v2
 
       - name: cargo-audit
-        run: cargo-audit --deny warnings
+        run: cargo-audit audit --deny warnings
 
   check-and-build:
     strategy:
