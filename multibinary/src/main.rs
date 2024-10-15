@@ -19,7 +19,7 @@ struct Args {
 enum Command {
     #[cfg(feature = "cli-clap")]
     #[command(alias = "cli")]
-    CliClap,
+    CliClap(ac_qu_ai_nt_cli_clap::Args),
     #[cfg(feature = "gui-eframe")]
     #[command(alias = "gui")]
     GuiEframe,
@@ -57,7 +57,7 @@ fn main() {
 
     match command {
         #[cfg(feature = "cli-clap")]
-        Command::CliClap => ac_qu_ai_nt_cli_clap::main(),
+        Command::CliClap(args) => ac_qu_ai_nt_cli_clap::main(args),
         #[cfg(feature = "gui-eframe")]
         Command::GuiEframe => ac_qu_ai_nt_gui_eframe::main(),
         #[cfg(feature = "tui-ratatui")]
