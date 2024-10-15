@@ -1,0 +1,157 @@
+name: Daily
+
+on:
+  schedule:
+    - cron: "27 17 * * *"
+
+jobs:
+  audit:
+    name: Use `cargo-audit` to create issues for vulnerabilities or other problems
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: rustsec/audit-check@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  check-and-build-with-nightly:
+    strategy:
+      matrix:
+        supporteds:
+          - runner: macos-latest
+            target: aarch64-apple-darwin
+
+          - runner: macos-latest
+            target: x86_64-apple-darwin
+
+          - install_prerequisite: sudo apt-get update && sudo apt-get install musl-dev musl-tools gcc-aarch64-linux-gnu g++-aarch64-linux-gnu && sudo ln -s /bin/g++ /bin/musl-g++
+            runner: ubuntu-latest
+            target: aarch64-unknown-linux-gnu
+
+          - install_prerequisite: sudo apt-get update && sudo apt-get install musl-dev musl-tools gcc-aarch64-linux-gnu g++-aarch64-linux-gnu && sudo ln -s /bin/g++ /bin/musl-g++
+            runner: ubuntu-latest
+            target: aarch64-unknown-linux-musl
+
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+
+          - install_prerequisite: sudo apt-get update && sudo apt-get install musl-dev musl-tools && sudo ln -s /bin/g++ /bin/musl-g++
+            runner: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+
+          # I would like to support this but I don't know how to install the dependencies to be able to
+          # - runner: windows-latest
+          #   target: aarch64-pc-windows-gnullvm
+
+          - runner: windows-latest
+            target: aarch64-pc-windows-msvc
+
+          # I don't think supporting this is up to me
+          # I forgot where I learned this, but
+          # I don't think I can use a non-Rust dependency (i.e. llama.cpp) here
+          # - runner: windows-latest
+          #   target: x86_64-pc-windows-gnu
+
+          - runner: windows-latest
+            target: x86_64-pc-windows-msvc
+    name: Check and build ${{ matrix.supporteds.target }} with nightly Rust (on ${{ matrix.supporteds.runner }}) ${{ matrix.minimal_or_latest.job_name_suffix }}
+    runs-on: ${{ matrix.supporteds.runner }}
+    timeout-minutes: 8
+    env:
+      # https://github.com/rust-lang/stacker/issues/80#issuecomment-1547991131
+      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
+      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER: aarch64-linux-gnu-gcc # TODO: shouldn't this be something to do with musl, not gcc?
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install prerequisite build chain
+        if: matrix.supporteds.install_prerequisite
+        run: ${{ matrix.supporteds.install_prerequisite }}
+
+      - name: Install nightly Rust toolchain
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          targets: ${{ matrix.supporteds.target }}
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ matrix.supporteds.target }}-latest-nightly
+          cache-on-failure: "true"
+
+      - name: Check
+        run: cargo check --verbose
+
+      - name: Build
+        run: cargo build --verbose
+
+  test-with-nightly:
+    strategy:
+      matrix:
+        supporteds:
+          - runner: macos-latest
+            target: aarch64-apple-darwin
+
+          - runner: macos-latest
+            target: x86_64-apple-darwin
+
+          # Not able to be tested in GitHub Actions (without emulation, at least)
+          # - runner: ubuntu-latest
+          #   target: aarch64-unknown-linux-gnu
+
+          # Not able to be tested in GitHub Actions (without emulation, at least)
+          # - runner: ubuntu-latest
+          #   target: aarch64-unknown-linux-musl
+
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+
+          - install_prerequisite: sudo apt-get update && sudo apt-get install musl-dev musl-tools && sudo ln -s /bin/g++ /bin/musl-g++
+            runner: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+
+          # Not able to be tested in GitHub Actions (without emulation, at least)
+          # - runner: windows-latest
+          #   target: aarch64-pc-windows-gnullvm
+
+          # Not able to be tested in GitHub Actions (without emulation, at least)
+          # - runner: windows-latest
+          #   target: aarch64-pc-windows-msvc
+
+          # I don't think supporting this is up to me
+          # I forgot where I learned this, but
+          # I don't think I can use a non-Rust dependency (i.e. llama.cpp) here
+          # - runner: windows-latest
+          #   target: x86_64-pc-windows-gnu
+
+          - runner: windows-latest
+            target: x86_64-pc-windows-msvc
+    name: Test ${{ matrix.supporteds.target }} with nightly Rust (on ${{ matrix.supporteds.runner }})
+    runs-on: ${{ matrix.supporteds.runner }}
+    timeout-minutes: 8
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install prerequisite build chain
+        if: matrix.supporteds.install_prerequisite
+        run: ${{ matrix.supporteds.install_prerequisite }}
+
+      - name: Install nightly Rust toolchain
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          targets: ${{ matrix.supporteds.target }}
+
+      - name: Install Nextest
+        uses: taiki-e/install-action@cargo-nextest
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ matrix.supporteds.target }}-latest
+          cache-on-failure: "true"
+
+      - name: Test
+        run: cargo nextest run --target ${{ matrix.supporteds.target }}
