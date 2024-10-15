@@ -9,7 +9,7 @@ pub struct Args {
     command: Command,
 }
 
-pub fn main(args: Args) {
+pub fn main(_args: Args) {
     #[cfg(feature = "tracing")]
     tracing::info!("What's up, world?");
 }
