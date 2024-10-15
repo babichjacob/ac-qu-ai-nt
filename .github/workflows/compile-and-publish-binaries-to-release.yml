@@ -72,7 +72,7 @@ jobs:
           cache-on-failure: "true"
 
       - name: Build for release
-        run: cargo build --release --verbose
+        run: cargo build --release --verbose --target ${{ matrix.supporteds.target }}
 
       # Have to do it like this because of https://github.com/actions/runner/issues/1985
       - if: startsWith(github.event.release.tag_name, 'ac-qu-ai-nt-v')
