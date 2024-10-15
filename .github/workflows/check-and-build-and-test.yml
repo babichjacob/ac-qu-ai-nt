@@ -18,22 +18,27 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  formatting-and-deny:
-    name: Check formatting and cargo-deny
+  formatting-and-deny-and-audit:
+    name: Check formatting, cargo-deny, and cargo-audit
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 4
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install stable Rust toolchain
         uses: dtolnay/rust-toolchain@stable
+      - name: Install cargo-audit
+        uses: taiki-e/install-action@cargo-audit
 
       - name: Formatting
         run: cargo fmt --check --verbose
 
       - name: cargo-deny
         uses: EmbarkStudios/cargo-deny-action@v2
+
+      - name: cargo-audit
+        run: cargo-audit --deny warnings
 
   check-and-build:
     strategy:
