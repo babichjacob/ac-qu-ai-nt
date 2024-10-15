@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.13](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.12...ac-qu-ai-nt-v0.0.13) - 2024-10-15
+
+### Other
+
+- build out the infrastructure for commands to be passed to the clap CLI
+
 ## [0.0.12](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.11...ac-qu-ai-nt-v0.0.12) - 2024-10-07
 
 ### Other

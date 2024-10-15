@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-gui-eframe-v0.0.5...ac-qu-ai-nt-gui-eframe-v0.0.6) - 2024-10-15
+
+### Fixed
+
+- *(ac-qu-ai-nt-gui-eframe)* write a `main` function instead of re-exporting so that the declared MSRV can be met
+
 ## [0.0.5](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-gui-eframe-v0.0.4...ac-qu-ai-nt-gui-eframe-v0.0.5) - 2024-10-07
 
 ### Other

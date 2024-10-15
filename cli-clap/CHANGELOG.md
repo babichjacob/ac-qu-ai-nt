@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.9](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-cli-clap-v0.0.8...ac-qu-ai-nt-cli-clap-v0.0.9) - 2024-10-15
+
+### Fixed
+
+- *(ac-qu-ai-nt-cli-clap)* write a `main` function instead of re-exporting so that the declared MSRV can be met
+
+### Other
+
+- *(cli-clap)* ignore the `Args` argument because it doesn't get used yet (to satisfy Clippy)
+- build out the infrastructure for commands to be passed to the clap CLI
+
 ## [0.0.8](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-cli-clap-v0.0.7...ac-qu-ai-nt-cli-clap-v0.0.8) - 2024-10-07
 
 ### Other
