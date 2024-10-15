@@ -150,7 +150,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          shared-key: ${{ matrix.supporteds.target }}-latest
+          shared-key: ${{ matrix.supporteds.target }}-latest-nightly
           cache-on-failure: "true"
 
       - name: Test
