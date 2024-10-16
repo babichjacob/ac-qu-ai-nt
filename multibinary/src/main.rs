@@ -50,6 +50,7 @@ cfg_if!(
     // with the GUI (made with eframe)
     // being considered more appealing (made the default)
     if #[cfg(feature = "gui-eframe")] {
+        #[allow(clippy::derivable_impls)]
         impl Default for Command {
             fn default() -> Self {
                 Command::GuiEframe
@@ -58,6 +59,7 @@ cfg_if!(
     }
     // than the TUI (made with Ratatui)
     else if #[cfg(feature = "tui-ratatui")] {
+        #[allow(clippy::derivable_impls)]
         impl Default for Command {
             fn default() -> Self {
                 Command::TuiRatatui
