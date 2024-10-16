@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.14](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.13...ac-qu-ai-nt-v0.0.14) - 2024-10-16
+
+### Added
+
+- *(multibinary)* support running the binary without arguments (using a sensible user interface as the default), and improve error reporting by using `snafu`
+
+### Other
+
+- *(multibinary)* mark the Clippy lint against manually implementing `Default` for `Command` as allowed
+- *(multibinary)* add `cfg-if` and `snafu` as dependencies
+
 ## [0.0.13](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.12...ac-qu-ai-nt-v0.0.13) - 2024-10-15
 
 ### Other
