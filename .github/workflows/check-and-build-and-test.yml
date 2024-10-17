@@ -199,6 +199,8 @@ jobs:
           shared-key: ${{ matrix.supporteds.target }}-latest
           cache-on-failure: "true"
 
+      - name: Build tests
+        run: cargo build --tests --target ${{ matrix.supporteds.target }}
       - name: Test
         run: cargo nextest run --target ${{ matrix.supporteds.target }}
 
