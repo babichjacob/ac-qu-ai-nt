@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-core-v0.0.4...ac-qu-ai-nt-core-v0.0.5) - 2024-10-17
+
+### Fixed
+
+- *(ac-qu-ai-nt-core)* raise the minimum acceptable version of `rten` to `0.13.1`
+
+### Other
+
+- *(ac-qu-ai-nt-core)* remove `surrealdb` as a dependency because the BUSL doesn't fit what I want this project to be. sorry. we'll see if I feel inclined to give it another chance
+- *(ac-qu-ai-nt-core)* upgrade `surrealdb` to `2` and I'm not sure why it defaulted to an old version
+- *(ac-qu-ai-nt-core)* add `ocrs`, `rten`, and `surrealdb` as dependencies because I expect to use them in the future and this will allow GitHub Actions to build cache for them or to report back to me that they're incompatible with the currently `supporteds`
+- *(ac-qu-ai-nt-core)* [**breaking**] make `tracing` no longer a default feature
+
 ## [0.0.4](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-core-v0.0.3...ac-qu-ai-nt-core-v0.0.4) - 2024-10-15
 
 ### Other
