@@ -18,6 +18,5 @@ llama-cpp-2 = "0.1.82"
 ocrs = "0.9"
 rten = "0.13"
 snafu = { workspace = true }
-surrealdb = { version = "2", default-features = false }
 
 tracing = { workspace = true, optional = true }
