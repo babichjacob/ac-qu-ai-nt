@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-core-v0.0.5...ac-qu-ai-nt-core-v0.0.6) - 2024-10-18
+
+### Fixed
+
+- *(ac-qu-ai-nt-core)* raise the minimum version of the `reqwest` dependency to the first one that includes the `zstd` feature
+
+### Other
+
+- *(ac-qu-ai-nt-core)* add `reqwest` as a dependency because I expect to use it and I'd like to make sure everything works out
+
 ## [0.0.5](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-core-v0.0.4...ac-qu-ai-nt-core-v0.0.5) - 2024-10-17
 
 ### Fixed
