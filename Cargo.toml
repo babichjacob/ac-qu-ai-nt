@@ -10,4 +10,4 @@ repository = "https://github.com/babichjacob/ac-qu-ai-nt"
 [workspace.dependencies]
 clap = "4"
 snafu = "0.8"
-tracing = "0.1.23"
+tracing = "0.1.35"
