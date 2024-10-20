@@ -119,3 +119,5 @@ All contents of this repository are licensed under either the
 - [Unlicense](LICENSE-UNLICENSE)
 
 at your option.
+
+All direct and indirect dependencies of this project are free software as defined by the [Free Software Foundation](https://www.gnu.org/licenses/license-list.html) and are licensed under [OSI Approved Licenses](https://opensource.org/licenses). [This is checked](./deny.toml) in this project's [continuous integration (CI)](./.github/workflows/check-and-build-and-test.yml) with [`cargo-deny`](https://crates.io/crates/cargo-deny).
