@@ -32,7 +32,6 @@ dependencies = [
  "llama-cpp-2",
  "ocrs",
  "reqwest",
- "rten",
  "snafu",
  "tracing",
 ]
