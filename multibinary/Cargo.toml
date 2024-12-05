@@ -1,7 +1,7 @@
 [package]
 name = "ac-qu-ai-nt"
 description = "A WIP project using AI to break down a user's query, acquire the knowledge to answer it, then transfer those insights to the user"
-version = "0.0.15"
+version = "0.0.16"
 edition = "2021"
 rust-version = "1.76"
 
@@ -27,9 +27,9 @@ tracing = [
 ]
 
 [dependencies]
-ac-qu-ai-nt-cli-clap = { version = "0.0.10", path = "../cli-clap", optional = true }
-ac-qu-ai-nt-gui-eframe = { version = "0.0.7", path = "../gui-eframe", optional = true }
-ac-qu-ai-nt-tui-ratatui = { version = "0.0.7", path = "../tui-ratatui", optional = true }
+ac-qu-ai-nt-cli-clap = { version = "0.0.11", path = "../cli-clap", optional = true }
+ac-qu-ai-nt-gui-eframe = { version = "0.0.8", path = "../gui-eframe", optional = true }
+ac-qu-ai-nt-tui-ratatui = { version = "0.0.8", path = "../tui-ratatui", optional = true }
 
 cfg-if = "1.0.0"
 clap = { workspace = true, features = ["derive", "env"] }
