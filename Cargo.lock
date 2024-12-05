@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "ac-qu-ai-nt"
-version = "0.0.15"
+version = "0.0.16"
 dependencies = [
  "ac-qu-ai-nt-cli-clap",
  "ac-qu-ai-nt-gui-eframe",
@@ -18,7 +18,7 @@ dependencies = [
 
 [[package]]
 name = "ac-qu-ai-nt-cli-clap"
-version = "0.0.10"
+version = "0.0.11"
 dependencies = [
  "clap",
  "tracing",
@@ -26,7 +26,7 @@ dependencies = [
 
 [[package]]
 name = "ac-qu-ai-nt-core"
-version = "0.0.7"
+version = "0.0.8"
 dependencies = [
  "cozo",
  "llama-cpp-2",
@@ -38,14 +38,14 @@ dependencies = [
 
 [[package]]
 name = "ac-qu-ai-nt-gui-eframe"
-version = "0.0.7"
+version = "0.0.8"
 dependencies = [
  "tracing",
 ]
 
 [[package]]
 name = "ac-qu-ai-nt-tui-ratatui"
-version = "0.0.7"
+version = "0.0.8"
 dependencies = [
  "tracing",
 ]

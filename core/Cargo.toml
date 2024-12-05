@@ -1,7 +1,7 @@
 [package]
 name = "ac-qu-ai-nt-core"
 description = "The core library of ac-qu-ai-nt. If you're looking for the application, see cli-clap or gui-eframe or tui-ratatui or the multibinary"
-version = "0.0.7"
+version = "0.0.8"
 edition = "2021"
 rust-version = "1.76"
 

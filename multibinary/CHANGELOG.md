@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.16](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.15...ac-qu-ai-nt-v0.0.16) - 2024-12-05
+
+### Other
+
+- update Cargo.lock dependencies
+
 ## [0.0.15](https://github.com/babichjacob/ac-qu-ai-nt/compare/ac-qu-ai-nt-v0.0.14...ac-qu-ai-nt-v0.0.15) - 2024-10-18
 
 ### Other
